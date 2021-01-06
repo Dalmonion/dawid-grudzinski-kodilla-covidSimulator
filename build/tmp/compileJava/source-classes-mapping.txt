@@ -1,0 +1,6 @@
+com/kodilla/covid/Board.java
+ com.kodilla.covid.Board
+com/kodilla/covid/IOServices.java
+ com.kodilla.covid.IOServices
+com/kodilla/covid/Main.java
+ com.kodilla.covid.Main
