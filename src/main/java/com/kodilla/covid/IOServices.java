@@ -1,5 +1,6 @@
 package com.kodilla.covid;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -15,10 +16,13 @@ public class IOServices {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(250);
+        window.setMinWidth(300);
+        window.setMinHeight(120);
 
-        Label label1 = new Label();
-        label1.setText(message);
+        Label labelText = new Label();
+        labelText.setText(message);
+        labelText.setScaleX(1.5);
+        labelText.setScaleY(1.5);
 
         Button yesButton = new Button("Yes");
         yesButton.setOnAction(e -> {
@@ -32,11 +36,17 @@ public class IOServices {
             window.close();
         });
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll( label1, yesButton, noButton);
-        layout.setAlignment(Pos.CENTER);
+        HBox hb = new HBox();
+        hb.setPadding(new Insets(10,15,10,10));
+        hb.setSpacing(10);
+        hb.setAlignment(Pos.BOTTOM_RIGHT);
+        hb.getChildren().addAll(yesButton, noButton);
 
-        Scene scene = new Scene(layout);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setBottom(hb);
+        borderPane.setCenter(labelText);
+
+        Scene scene = new Scene(borderPane);
         window.setScene(scene);
         window.showAndWait();
 
