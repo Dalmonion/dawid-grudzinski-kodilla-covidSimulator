@@ -5,20 +5,18 @@ plugins {
 
 javafx {
     version = "11.0.2"
-    modules = [ 'javafx.controls' ]
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 group 'com.kodilla'
 version '1.0-SNAPSHOT'
-mainClassName = 'com.kodilla.covid.MainWindow'
+mainClassName = 'com.kodilla.covid.gui.SpreadSimApplication'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {

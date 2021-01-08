@@ -127,13 +127,7 @@ public class MainWindow extends Application {
                 sickCountLabel, curedCountLabel, deathCountLabel,
                 healthyCount, sickCount, curedCount, deathCount);
 
-        // gridpane lewej strony borderPane zawierajacy slidery oraz grid pane
-//        GridPane gridPane1 = new GridPane();
-//        gridPane.setAlignment(Pos.CENTER);
-//        gridPane.setPadding(new Insets(12, 12, 12, 12));
-//        gridPane.setVgap(15);
-//        gridPane.setHgap(10);
-//        gridPane.getChildren().addAll(slider1, slider2);
+
         VBox vBox = new VBox();
         vBox.setSpacing(20);
         vBox.getChildren().addAll(grid, gridPane);
@@ -150,14 +144,21 @@ public class MainWindow extends Application {
         helpIcon.setArcHeight(3.5);
         helpIcon.setArcWidth(3.5);
 
+        Person person = new Person(stackPane);
+        person.draw();
+
         Text helpText = new Text("?");
         helpText.setFont(Font.font("Verdana", FontWeight.BOLD, 100));
         helpText.setFill(Color.WHITE);
         helpText.setStroke(Color.web("#7080A0"));
 
-        stackPane.getChildren().addAll(helpIcon, helpText);
+//        stackPane.getChildren().addAll(helpIcon, helpText);
         stackPane.setAlignment(Pos.CENTER);
         StackPane.setMargin(helpText, new Insets(0, 10, 0, 0));
+
+        // oknow własciwe obrazu graficznegoo
+        Pane canvas = new Pane();
+
 
         // gotowa scena
         BorderPane borderPane = new BorderPane();
