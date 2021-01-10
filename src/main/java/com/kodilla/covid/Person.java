@@ -13,7 +13,7 @@ public class Person {
 
     public static final double VELOCITY = 2.0;
 
-    private enum State {
+    public static enum State {
         HEALTHY, SICK, CURED, DECEASED
     }
 
@@ -33,7 +33,7 @@ public class Person {
         this.dx = Math.sin(dirAngle);
         this.dy = Math.cos(dirAngle);
         this.world = world;
-        this.circle = new Circle(35, getPersonColor());
+        this.circle = new Circle(5, getPersonColor());
         xPosition = circle.getRadius() + Math.random() * (world.getWidth() - 2 * circle.getRadius());
         yPosition = circle.getRadius() + Math.random() * (world.getHeight() - 2 * circle.getRadius());
         circle.setStroke(Color.BLACK);

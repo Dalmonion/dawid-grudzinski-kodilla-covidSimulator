@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.TextFlow?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodilla.covid.gui.SpreadSimController">
     <top>
@@ -62,14 +61,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Healthy people count:" />
-                        <Label text="Sick people count:" GridPane.rowIndex="1" />
-                        <Label text="Cured people count:" GridPane.rowIndex="2" />
-                        <Label prefHeight="0.0" prefWidth="28.0" text="Death count:" GridPane.rowIndex="3" />
-                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="221.0" text="Healthy people count:" />
+                        <Label prefHeight="17.0" prefWidth="202.0" text="Sick people count:" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="173.0" text="Cured people count:" GridPane.rowIndex="2" />
+                        <Label prefHeight="17.0" prefWidth="178.0" text="Death count:" GridPane.rowIndex="3" />
+                  <Label fx:id="healthyPeopleText" alignment="CENTER" prefHeight="17.0" prefWidth="60.0" text="0" GridPane.columnIndex="1" />
+                  <Label fx:id="sickPeopleText" alignment="CENTER" prefHeight="17.0" prefWidth="115.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="curedPeopleText" alignment="CENTER" prefHeight="17.0" prefWidth="97.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="deathPeopleText" alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
             </children>
