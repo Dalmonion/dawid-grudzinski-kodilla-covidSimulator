@@ -13,32 +13,41 @@ public class SpreadSimulation {
     public SpreadSimulation(Pane world, int peopleCount) {
         people = new ArrayList<>();
 
-//
-//        for ( int i = 0 ; i < peopleCount; i++) {
-//            people.add(new Person(world));
-//        }
 
-        people.add(new Person(world));
-
-        while (people.size() < peopleCount) {
-            Person newPerson = new Person(world);
-
-            for (int j = 0; j < people.size(); j++) {
-
-                double getDistance = newPerson.distanceBetweenTwo(people.get(j));
-
-                if (getDistance <= (newPerson.getRadius() + people.get(j).getRadius())) {
-                    break;
-                }
-
-                if (j == (people.size() - 1)) {
-                    people.add(newPerson);
-                }
-
-            }
+        for ( int i = 0 ; i < peopleCount; i++) {
+            people.add(new Person(world));
         }
-//        System.out.println(people.size());
-//        people.get(people.size() - 1).setSick();
+
+//        people.add(new Person(world));
+//        System.out.println("first person location X: "  + people.get(0).getXPosition() + ", Y: " +
+//                people.get(0).getYPosition());
+//
+//        while (people.size() < peopleCount) {
+//            Person newPerson = new Person(world);
+//            System.out.println("newPerson location X: " + newPerson.getXPosition() + ", Y: " +
+//                    newPerson.getYPosition());
+//            for (int j = 0; j < people.size(); j++) {
+//
+//                double getDistance = newPerson.distanceBetweenTwo(people.get(j));
+//                System.out.println("Distance = " + getDistance);
+//
+//                if (getDistance <= (newPerson.getRadius() + people.get(j).getRadius())) {
+//                    System.out.println("Too close");
+//                    System.out.println();
+//                    break;
+//                }
+//
+//                if (j == (people.size() - 1)) {
+//                    people.add(newPerson);
+//                    System.out.println("New person added with location X: " + newPerson.getXPosition() + ", Y: " +
+//                    newPerson.getYPosition());
+//                    System.out.println();
+//                }
+//
+//            }
+//        }
+        System.out.println(people.size());
+        people.get(people.size() - 1).setSick();
 
 
     }
@@ -46,11 +55,22 @@ public class SpreadSimulation {
     public void move() {
         for (Person person : people) {
             for (Person otherPersons : people) {
-                if (person == otherPersons) continue;
-                person.areCollide(otherPersons);
+                if (person.equals(otherPersons)) continue;
+//                    person.areCollide(otherPersons);
+                    double distance = person.distanceBetweenTwo(otherPersons);
+                    if (distance < person.getRadius() + otherPersons.getRadius()) {
+                        if (person.getState().equals(Person.State.SICK)) {
+                            otherPersons.setSick();
+                        } else if (otherPersons.getState().equals(Person.State.SICK)) {
+                            person.setSick();
+                        } else {
+
+                        }
+                    }
             }
             person.move();
         }
+
     }
 
     public void draw() {

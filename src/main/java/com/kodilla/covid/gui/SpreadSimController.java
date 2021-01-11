@@ -33,7 +33,7 @@ public class SpreadSimController {
     Timeline timeline;
     boolean isMoving;
     boolean firstMove = false;
-    int peopleCount = 5;
+    int peopleCount = 100;
 
     @FXML
     public void initialize() {
@@ -73,6 +73,7 @@ public class SpreadSimController {
 
     @FXML
     public void reset() {
+        stop();
         world.getChildren().clear();
         firstMove = true;
         simulation = new SpreadSimulation(world, peopleCount);

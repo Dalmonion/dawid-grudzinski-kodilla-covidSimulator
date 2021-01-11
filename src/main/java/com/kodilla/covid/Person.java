@@ -13,48 +13,75 @@ public class Person {
 
     public static final double VELOCITY = 2.0;
 
-    public static enum State {
+    public enum State {
         HEALTHY, SICK, CURED, DECEASED
     }
 
     private double xPosition;
     private double yPosition;
-    private double dx; // x axis direction heading
-    private double dy; // y axis direction heading
+    private float dx; // x axis direction heading
+    private float dy; // y axis direction heading
     private State state = State.HEALTHY;
     private Pane world;
-    private int radius = 50;
+    private int radius = 5;
     private Circle circle;
     private Color personColor = Color.GREEN;
+    private int timePassed = 0;
+    private int sickTimePassed = 0;
+    private boolean wasSick = false;
 
 
     public Person(Pane world) {
 
         double dirAngle = Math.random() * 2 * Math.PI;
-        this.dx = Math.sin(dirAngle);
-        this.dy = Math.cos(dirAngle);
+        this.dx = (float) Math.sin(dirAngle);
+        this.dy = (float) Math.cos(dirAngle);
         this.world = world;
         this.circle = new Circle(radius, getPersonColor());
-        xPosition = circle.getRadius() + Math.random() * (world.getWidth() - 2 * circle.getRadius());
-        yPosition = circle.getRadius() + Math.random() * (world.getHeight() - 2 * circle.getRadius());
+        xPosition = (float) (circle.getRadius() + Math.random() * (world.getWidth() - 2 * circle.getRadius()));
+        yPosition = (float) (circle.getRadius() + Math.random() * (world.getHeight() - 2 * circle.getRadius()));
         circle.setStroke(Color.BLACK);
         world.getChildren().add(circle);
     }
 
     public void move() {
-        xPosition += getXDirection();
-        yPosition += getYDirection();
+
+        if (this.getState() != State.DECEASED) {
+            xPosition += getXDirection();
+            yPosition += getYDirection();
+        }
+
+        timePassed++;
+        if(wasSick) sickTimePassed++;
+
+        if(sickTimePassed == 320) {
+            if (this.getState() == State.SICK) {
+                this.setState(State.CURED);
+            }
+        }
+
+        if(this.getState().equals(State.SICK) && (sickTimePassed == 300)) {
+            if (Math.random() < 0.04) {
+                this.setState(State.DECEASED);
+            }
+        }
+
         if (xPosition > (world.getWidth() - circle.getRadius()) || xPosition < circle.getRadius()) bounceX();
         if (yPosition > (world.getHeight() - circle.getRadius()) || yPosition < circle.getRadius()) bounceY();
-    }
 
-    public void updatePosition() {
-        double tempX = getXPosition() + getXDirection();
-        double tempY = getYPosition() + getYDirection();
-        if (tempX > (world.getWidth() - circle.getRadius()) || tempX < circle.getRadius()) bounceX();
-        if (tempY > (world.getHeight() - circle.getRadius()) || tempY < circle.getRadius()) bounceY();
-        move();
-        draw();
+//        if (this.getXPosition() > world.getWidth()) {
+//            this.setXPosition(0);
+//        }
+//        if (this.getXPosition() < 0) {
+//            this.setXPosition(world.getWidth());
+//        }
+//
+//        if (this.getYPosition() > world.getHeight()) {
+//            this.setYPosition(0);
+//        }
+//        if (this.getYPosition() < 0) {
+//            this.setYPosition(world.getHeight());
+//        }
     }
 
     public void draw() {
@@ -78,11 +105,11 @@ public class Person {
         return dy;
     }
 
-    public void setXDirection(double direction) {
+    public void setXDirection(float direction) {
         dx = direction;
     }
 
-    public void setYDirection(double direction) {
+    public void setYDirection(float direction) {
         dy = direction;
     }
 
@@ -94,11 +121,11 @@ public class Person {
         this.yPosition = yPosition;
     }
 
-    public void setDx(double dx) {
+    public void setDx(float dx) {
         this.dx = dx;
     }
 
-    public void setDy(double dy) {
+    public void setDy(float dy) {
         this.dy = dy;
     }
 
@@ -123,7 +150,7 @@ public class Person {
                 this.personColor = Color.RED;
                 break;
             case CURED:
-                this.personColor = Color.ORANGE;
+                this.personColor = Color.BLUE;
                 break;
             case DECEASED:
                 this.personColor = Color.BLACK;
@@ -139,7 +166,10 @@ public class Person {
     }
 
     public void setSick() {
-        setState(State.SICK);
+        if (!wasSick) {
+            setState(State.SICK);
+            wasSick = true;
+        }
     }
 
     public void setCured() {
@@ -147,7 +177,7 @@ public class Person {
     }
 
     public void setDeceased() {
-        setState(State.DECEASED);
+        this.setState(State.DECEASED);
     }
 
     public void setState(State state) {
@@ -159,20 +189,27 @@ public class Person {
         return radius;
     }
 
-    public double distanceBetweenTwo(Person otherPerson) {
-        return  (Math.sqrt(Math.pow((this.getXPosition() - otherPerson.getXPosition()), 2) +
-                Math.pow((this.getYPosition() - otherPerson.getYPosition()), 2)));
+    public float distanceBetweenTwo(Person otherPerson) {
+        return (float) (Math.sqrt(((this.getXPosition() - otherPerson.getXPosition()) *
+                (this.getXPosition() - otherPerson.getXPosition())) +
+                ((this.getYPosition() - otherPerson.getYPosition()) *
+                        (this.getYPosition() - otherPerson.getYPosition()))));
+
+//        return (Math.sqrt(Math.pow((this.getXPosition() - otherPerson.getXPosition()), 2) +
+//                Math.pow((this.getYPosition() - otherPerson.getYPosition()), 2)));
     }
 
     public void areCollide(Person otherPerson) {
         double distance = distanceBetweenTwo(otherPerson);
 
-        if (distance <= (this.radius + otherPerson.radius)) {
-            double tempX = this.getXDirection();
-            double tempY = this.getYDirection();
 
-            this.setXDirection(otherPerson.getXDirection());
-            this.setYDirection(otherPerson.getYDirection());
+        if (distance < (this.getRadius() + otherPerson.getRadius())) {
+
+            float tempX = (float) this.getXDirection();
+            float tempY = (float) this.getYDirection();
+
+            this.setXDirection((float) otherPerson.getXDirection());
+            this.setYDirection((float) otherPerson.getYDirection());
 
             otherPerson.setXDirection(tempX);
             otherPerson.setYDirection(tempY);

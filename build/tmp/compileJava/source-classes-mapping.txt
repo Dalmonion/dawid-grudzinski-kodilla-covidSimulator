@@ -1,5 +1,5 @@
-com/kodilla/covid/MainWindow.java
- com.kodilla.covid.MainWindow
+com/kodilla/covid/gui/SpreadSimController.java
+ com.kodilla.covid.gui.SpreadSimController
 com/kodilla/covid/Person.java
  com.kodilla.covid.Person
  com.kodilla.covid.Person$1
@@ -8,8 +8,8 @@ com/kodilla/covid/IOServices.java
  com.kodilla.covid.IOServices
 com/kodilla/covid/gui/SpreadSimApplication.java
  com.kodilla.covid.gui.SpreadSimApplication
-com/kodilla/covid/gui/SpreadSimController.java
- com.kodilla.covid.gui.SpreadSimController
+com/kodilla/covid/MainWindow.java
+ com.kodilla.covid.MainWindow
 com/kodilla/covid/SpreadSimulation.java
  com.kodilla.covid.SpreadSimulation
  com.kodilla.covid.SpreadSimulation$1
