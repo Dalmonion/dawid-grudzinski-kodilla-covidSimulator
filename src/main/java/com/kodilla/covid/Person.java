@@ -23,6 +23,7 @@ public class Person {
     private double dy; // y axis direction heading
     private State state = State.HEALTHY;
     private Pane world;
+    private int radius = 50;
     private Circle circle;
     private Color personColor = Color.GREEN;
 
@@ -33,7 +34,7 @@ public class Person {
         this.dx = Math.sin(dirAngle);
         this.dy = Math.cos(dirAngle);
         this.world = world;
-        this.circle = new Circle(5, getPersonColor());
+        this.circle = new Circle(radius, getPersonColor());
         xPosition = circle.getRadius() + Math.random() * (world.getWidth() - 2 * circle.getRadius());
         yPosition = circle.getRadius() + Math.random() * (world.getHeight() - 2 * circle.getRadius());
         circle.setStroke(Color.BLACK);
@@ -75,6 +76,14 @@ public class Person {
 
     public double getYDirection() {
         return dy;
+    }
+
+    public void setXDirection(double direction) {
+        dx = direction;
+    }
+
+    public void setYDirection(double direction) {
+        dy = direction;
     }
 
     public void setXPosition(double xPosition) {
@@ -146,7 +155,29 @@ public class Person {
         setPersonColor(state);
     }
 
+    public int getRadius() {
+        return radius;
+    }
 
+    public double distanceBetweenTwo(Person otherPerson) {
+        return  (Math.sqrt(Math.pow((this.getXPosition() - otherPerson.getXPosition()), 2) +
+                Math.pow((this.getYPosition() - otherPerson.getYPosition()), 2)));
+    }
+
+    public void areCollide(Person otherPerson) {
+        double distance = distanceBetweenTwo(otherPerson);
+
+        if (distance <= (this.radius + otherPerson.radius)) {
+            double tempX = this.getXDirection();
+            double tempY = this.getYDirection();
+
+            this.setXDirection(otherPerson.getXDirection());
+            this.setYDirection(otherPerson.getYDirection());
+
+            otherPerson.setXDirection(tempX);
+            otherPerson.setYDirection(tempY);
+        }
+    }
 }
 
 

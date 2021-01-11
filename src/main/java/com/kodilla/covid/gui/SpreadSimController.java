@@ -30,26 +30,33 @@ public class SpreadSimController {
     Label deathPeopleText;
 
     SpreadSimulation simulation;
-    boolean isMoving;
     Timeline timeline;
+    boolean isMoving;
+    boolean firstMove = false;
+    int peopleCount = 5;
 
     @FXML
     public void initialize() {
         isMoving = false;
         world.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
-        simulation = new SpreadSimulation(world, 100);
+
         timeline = new Timeline(new KeyFrame(Duration.millis(17), x -> {
             simulation.move();
             simulation.draw();
-            healthyPeopleText.setText(String.valueOf(simulation.getEachCaseSize().get(0)));
-            sickPeopleText.setText(String.valueOf(simulation.getEachCaseSize().get(1)));
-            curedPeopleText.setText(String.valueOf(simulation.getEachCaseSize().get(2)));
-            deathPeopleText.setText(String.valueOf(simulation.getEachCaseSize().get(3)));
+            healthyPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(0)));
+            sickPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(1)));
+            curedPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(2)));
+            deathPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(3)));
         }));
     }
 
     @FXML
     public void start() {
+        if (!firstMove) {
+            firstMove = true;
+            simulation = new SpreadSimulation(world, peopleCount);
+        }
+
         if(!isMoving) {
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
@@ -67,9 +74,9 @@ public class SpreadSimController {
     @FXML
     public void reset() {
         world.getChildren().clear();
-        simulation = new SpreadSimulation(world, 100);
+        firstMove = true;
+        simulation = new SpreadSimulation(world, peopleCount);
         simulation.draw();
-
     }
 
     @FXML

@@ -13,15 +13,42 @@ public class SpreadSimulation {
     public SpreadSimulation(Pane world, int peopleCount) {
         people = new ArrayList<>();
 
-        for (int i=0; i < peopleCount; i++) {
-            people.add(new Person(world));
+//
+//        for ( int i = 0 ; i < peopleCount; i++) {
+//            people.add(new Person(world));
+//        }
+
+        people.add(new Person(world));
+
+        while (people.size() < peopleCount) {
+            Person newPerson = new Person(world);
+
+            for (int j = 0; j < people.size(); j++) {
+
+                double getDistance = newPerson.distanceBetweenTwo(people.get(j));
+
+                if (getDistance <= (newPerson.getRadius() + people.get(j).getRadius())) {
+                    break;
+                }
+
+                if (j == (people.size() - 1)) {
+                    people.add(newPerson);
+                }
+
+            }
         }
-        draw();
-        people.get(people.size()-1).setSick();
+//        System.out.println(people.size());
+//        people.get(people.size() - 1).setSick();
+
+
     }
 
     public void move() {
         for (Person person : people) {
+            for (Person otherPersons : people) {
+                if (person == otherPersons) continue;
+                person.areCollide(otherPersons);
+            }
             person.move();
         }
     }
@@ -32,10 +59,10 @@ public class SpreadSimulation {
         }
     }
 
-    public List<Integer> getEachCaseSize() {
+    public List<Integer> getEachTypeCount() {
         List<Integer> peopleDivision = new ArrayList<>();
 
-        for (int i = 0 ; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             peopleDivision.add(0);
         }
 
@@ -65,6 +92,4 @@ public class SpreadSimulation {
         }
         return peopleDivision;
     }
-
-
 }

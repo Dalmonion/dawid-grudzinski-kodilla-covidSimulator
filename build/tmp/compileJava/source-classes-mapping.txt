@@ -8,8 +8,8 @@ com/kodilla/covid/IOServices.java
  com.kodilla.covid.IOServices
 com/kodilla/covid/gui/SpreadSimApplication.java
  com.kodilla.covid.gui.SpreadSimApplication
+com/kodilla/covid/gui/SpreadSimController.java
+ com.kodilla.covid.gui.SpreadSimController
 com/kodilla/covid/SpreadSimulation.java
  com.kodilla.covid.SpreadSimulation
  com.kodilla.covid.SpreadSimulation$1
-com/kodilla/covid/gui/SpreadSimController.java
- com.kodilla.covid.gui.SpreadSimController
