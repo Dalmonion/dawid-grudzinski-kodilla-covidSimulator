@@ -1,0 +1,16 @@
+
+J
+java:S1066:"/Merge this if statement with the enclosing one.(Ü¥ÛÐøÿÿÿÿ
+E
+java:S1066@"/Merge this if statement with the enclosing one.(£¿×‚
+H
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ
+G
+java:S1128	",Remove this unused import 'java.util.Timer'.(†£ñáÿÿÿÿÿ
+\
+java:S1128"FRemove this unused import 'com.kodilla.covid.gui.SpreadSimController'.(Öäƒ›
+F
+java:S1128
+"0Remove this unused import 'java.util.TimerTask'.(àÀÇÙ
+V	java:S125H"<This block of commented-out lines of code should be removed.(Ó›¤¿ÿÿÿÿÿ
+W	java:S125Ç"<This block of commented-out lines of code should be removed.(ü¹Ù×øÿÿÿÿ

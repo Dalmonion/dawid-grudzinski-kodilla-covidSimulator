@@ -1,20 +1,13 @@
 package com.kodilla.covid;
 
-import com.kodilla.covid.gui.SpreadSimController;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Person {
 
-    public static final double VELOCITY = 2.0;
-
     public enum State {
-        HEALTHY, SICK, CURED, DECEASED
+        HEALTHY, SICK, CURED, DECEASED;
     }
 
     private double xPosition;
@@ -23,12 +16,15 @@ public class Person {
     private float dy; // y axis direction heading
     private State state = State.HEALTHY;
     private Pane world;
-    private int radius = 5;
+    private double radius = 5;
     private Circle circle;
     private Color personColor = Color.GREEN;
-    private int timePassed = 0;
-    private int sickTimePassed = 0;
+    private long deathTimer = 1000;
+    private long timeWhenGotSick;
+    private double sickTime = 2000;
     private boolean wasSick = false;
+    private double speed = 0.0;
+    private double deathRate = 1;
 
 
     public Person(Pane world) {
@@ -47,24 +43,33 @@ public class Person {
     public void move() {
 
         if (this.getState() != State.DECEASED) {
-            xPosition += getXDirection();
-            yPosition += getYDirection();
+            xPosition += (getXDirection() * speed);
+            yPosition += (getYDirection() * speed);
         }
 
-        timePassed++;
-        if(wasSick) sickTimePassed++;
-
-        if(sickTimePassed == 320) {
+        if((System.currentTimeMillis() - timeWhenGotSick) >= sickTime) {
             if (this.getState() == State.SICK) {
-                this.setState(State.CURED);
+                if (Math.random() < deathRate * 0.01) {
+                    this.setDeceased();
+                } else {
+                    this.setCured();
+                }
             }
         }
 
-        if(this.getState().equals(State.SICK) && (sickTimePassed == 300)) {
-            if (Math.random() < 0.04) {
-                this.setState(State.DECEASED);
-            }
-        }
+
+
+//        if(this.getState().equals(State.SICK) && ((System.currentTimeMillis() - timeWhenGotSick) >= sickTime - 1)) {
+//            if (Math.random() < deathRate * 0.01) {
+//                this.setDeceased();
+//            }
+//
+////            if ((System.currentTimeMillis() - timeWhenGotSick) >= deathTimer) {
+////                deathTimer += 1000;
+////                System.out.println(deathTimer);
+////            }
+//
+//        }
 
         if (xPosition > (world.getWidth() - circle.getRadius()) || xPosition < circle.getRadius()) bounceX();
         if (yPosition > (world.getHeight() - circle.getRadius()) || yPosition < circle.getRadius()) bounceY();
@@ -87,6 +92,23 @@ public class Person {
     public void draw() {
         circle.setTranslateX(getXPosition());
         circle.setTranslateY(getYPosition());
+        circle.setRadius(radius);
+    }
+
+    public void setMovementSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public double getMovementSpeed() {
+        return speed;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public void setSickTime(double time) {
+        this.sickTime = time;
     }
 
     public double getXPosition() {
@@ -168,6 +190,7 @@ public class Person {
     public void setSick() {
         if (!wasSick) {
             setState(State.SICK);
+            timeWhenGotSick = System.currentTimeMillis();
             wasSick = true;
         }
     }
@@ -185,7 +208,15 @@ public class Person {
         setPersonColor(state);
     }
 
-    public int getRadius() {
+    public double getDeathRate() {
+        return deathRate;
+    }
+
+    public void setDeathRate(double deathRate) {
+        this.deathRate = deathRate;
+    }
+
+    public double getRadius() {
         return radius;
     }
 
@@ -194,9 +225,6 @@ public class Person {
                 (this.getXPosition() - otherPerson.getXPosition())) +
                 ((this.getYPosition() - otherPerson.getYPosition()) *
                         (this.getYPosition() - otherPerson.getYPosition()))));
-
-//        return (Math.sqrt(Math.pow((this.getXPosition() - otherPerson.getXPosition()), 2) +
-//                Math.pow((this.getYPosition() - otherPerson.getYPosition()), 2)));
     }
 
     public void areCollide(Person otherPerson) {

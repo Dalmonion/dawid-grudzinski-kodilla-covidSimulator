@@ -67,11 +67,11 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\kodilla-covidSimulator-1.0-SNAPSHOT.jar;%APP_HOME%\lib\javafx-fxml-11.0.2-win.jar;%APP_HOME%\lib\javafx-controls-11.0.2-win.jar;%APP_HOME%\lib\javafx-controls-11.0.2.jar;%APP_HOME%\lib\javafx-graphics-11.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-11.0.2.jar;%APP_HOME%\lib\javafx-base-11.0.2-win.jar;%APP_HOME%\lib\javafx-base-11.0.2.jar
+set CLASSPATH=%APP_HOME%\lib\kodilla-covidSimulator-1.0-SNAPSHOT.jar;%APP_HOME%\lib\javafx-fxml-11.0.2-win.jar;%APP_HOME%\lib\javafx-controls-11.0.2-win.jar;%APP_HOME%\lib\javafx-controls-11.0.2.jar;%APP_HOME%\lib\javafx-graphics-11.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-11.0.2.jar;%APP_HOME%\lib\javafx-base-11.0.2-win.jar;%APP_HOME%\lib\javafx-base-11.0.2.jar;%APP_HOME%\lib\lombok-1.18.16.jar;%APP_HOME%\lib\logback-classic-1.2.3.jar;%APP_HOME%\lib\logback-core-1.2.3.jar;%APP_HOME%\lib\slf4j-api-1.7.25.jar
 
 
 @rem Execute kodilla-covidSimulator
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KODILLA_COVID_SIMULATOR_OPTS%  -classpath "%CLASSPATH%" com.kodilla.covid.gui.SpreadSimApp %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KODILLA_COVID_SIMULATOR_OPTS%  -classpath "%CLASSPATH%" com.kodilla.covid.gui.SpreadSimApplication %*
 
 :end
 @rem End local scope for the variables with windows NT shell

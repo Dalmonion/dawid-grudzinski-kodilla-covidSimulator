@@ -17,6 +17,12 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.16'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
 test {

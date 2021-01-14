@@ -1,22 +1,29 @@
 package com.kodilla.covid;
 
 import javafx.scene.layout.Pane;
+//import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//@Slf4j
 
 public class SpreadSimulation {
 
 
     private ArrayList<Person> people;
+    private Pane world;
 
     public SpreadSimulation(Pane world, int peopleCount) {
         people = new ArrayList<>();
+        this.world = world;
 
 
         for ( int i = 0 ; i < peopleCount; i++) {
             people.add(new Person(world));
         }
+
+
 
 //        people.add(new Person(world));
 //        System.out.println("first person location X: "  + people.get(0).getXPosition() + ", Y: " +
@@ -46,8 +53,7 @@ public class SpreadSimulation {
 //
 //            }
 //        }
-        System.out.println(people.size());
-        people.get(people.size() - 1).setSick();
+        people.get(0).setSick();
 
 
     }
@@ -63,14 +69,38 @@ public class SpreadSimulation {
                             otherPersons.setSick();
                         } else if (otherPersons.getState().equals(Person.State.SICK)) {
                             person.setSick();
-                        } else {
-
                         }
                     }
             }
+
             person.move();
         }
 
+    }
+
+//    public void setPeopleSize(double size) {
+//        for (Person person : people) {
+//            person.setRadius(size);
+//        }
+//    }
+//
+//    public void setPeopleSpeed(double speed) {
+//        for (Person person : people) {
+//            person.setMovementSpeed(speed);
+//        }
+//    }
+
+    public int getPeopleSize() {
+        return people.size();
+    }
+
+    public void setPeopleProperties(double size, double speed, double time, double deathRate) {
+        for (Person person : people) {
+            person.setRadius(size);
+            person.setMovementSpeed(speed);
+            person.setSickTime(time * 1000);
+            person.setDeathRate(deathRate);
+        }
     }
 
     public void draw() {
