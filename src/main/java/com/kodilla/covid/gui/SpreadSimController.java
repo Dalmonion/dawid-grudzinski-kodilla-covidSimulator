@@ -1,6 +1,7 @@
 package com.kodilla.covid.gui;
 
 import com.kodilla.covid.SpreadSimulation;
+import com.kodilla.covid.Stopwatch;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +13,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.text.DecimalFormat;
 
 
 public class SpreadSimController {
@@ -57,8 +60,12 @@ public class SpreadSimController {
     @FXML
     Slider deathRate;
 
+    @FXML
+    Label stopwatch;
+
     private SpreadSimulation simulation;
     private Timeline timeline;
+    private Stopwatch stopwatchObject;
     private boolean isMoving;
     private boolean firstMove = false;
     private int peopleCount = 100;
@@ -67,6 +74,8 @@ public class SpreadSimController {
     public void initialize() {
         isMoving = false;
         world.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
+        stopwatchObject = new Stopwatch();
+
 
         timeline = new Timeline(new KeyFrame(Duration.millis(17), x -> {
 
@@ -76,6 +85,8 @@ public class SpreadSimController {
 
             simulation.draw();
             simulation.move();
+
+            stopwatch.setText(stopwatchObject.getDuration() + " seconds");
 
             healthyPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(0)));
             healthyPeoplePercentageText.setText(String.valueOf((int) ((float)
@@ -102,11 +113,13 @@ public class SpreadSimController {
             firstMove = true;
             peopleCount = (int) groupSize.getValue();
             simulation = new SpreadSimulation(world, peopleCount);
+            stopwatchObject.start();
         }
 
         if(!isMoving) {
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
+            stopwatchObject.start();
             isMoving = true;
         }
     }
@@ -115,7 +128,7 @@ public class SpreadSimController {
     public void stop() {
         isMoving = false;
         timeline.stop();
-
+        stopwatchObject.stop();
     }
 
     @FXML
@@ -124,6 +137,8 @@ public class SpreadSimController {
         firstMove = true;
         simulation = new SpreadSimulation(world, peopleCount);
         simulation.draw();
+        stopwatchObject = new Stopwatch();
+        stop();
     }
 
     @FXML

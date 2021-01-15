@@ -1,15 +1,17 @@
 com/kodilla/covid/gui/SpreadSimApplication.java
  com.kodilla.covid.gui.SpreadSimApplication
-com/kodilla/covid/IOServices.java
- com.kodilla.covid.IOServices
-com/kodilla/covid/gui/SpreadSimController.java
- com.kodilla.covid.gui.SpreadSimController
+com/kodilla/covid/old/IOServices.java
+ com.kodilla.covid.old.IOServices
+com/kodilla/covid/SpreadSimulation.java
+ com.kodilla.covid.SpreadSimulation
+ com.kodilla.covid.SpreadSimulation$1
+com/kodilla/covid/Stopwatch.java
+ com.kodilla.covid.Stopwatch
 com/kodilla/covid/Person.java
  com.kodilla.covid.Person
  com.kodilla.covid.Person$1
  com.kodilla.covid.Person$State
-com/kodilla/covid/MainWindow.java
- com.kodilla.covid.MainWindow
-com/kodilla/covid/SpreadSimulation.java
- com.kodilla.covid.SpreadSimulation
- com.kodilla.covid.SpreadSimulation$1
+com/kodilla/covid/old/MainWindow.java
+ com.kodilla.covid.old.MainWindow
+com/kodilla/covid/gui/SpreadSimController.java
+ com.kodilla.covid.gui.SpreadSimController

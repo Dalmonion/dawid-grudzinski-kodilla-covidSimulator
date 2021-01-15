@@ -15,16 +15,16 @@ public class Person {
     private float dx; // x axis direction heading
     private float dy; // y axis direction heading
     private State state = State.HEALTHY;
-    private Pane world;
+    private final Pane world;
     private double radius = 5;
-    private Circle circle;
+    private final Circle circle;
     private Color personColor = Color.GREEN;
-    private long deathTimer = 1000;
+//    private long deathTimer = 1000;
     private long timeWhenGotSick;
-    private double sickTime = 2000;
+    private double sickTime = 5000;
     private boolean wasSick = false;
-    private double speed = 0.0;
-    private double deathRate = 1;
+    private double speed = 1.0;
+    private double deathRate = 3;
 
 
     public Person(Pane world) {
