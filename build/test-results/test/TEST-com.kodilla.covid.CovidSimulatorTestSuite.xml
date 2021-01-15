@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.covid.CovidSimulatorTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-01-15T16:16:05" hostname="DESKTOP-LQVCQEI" time="0.243">
+  <properties/>
+  <testcase name="testPersonStateChange()" classname="com.kodilla.covid.CovidSimulatorTestSuite" time="0.241"/>
+  <testcase name="testIsPersonMoving()" classname="com.kodilla.covid.CovidSimulatorTestSuite" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

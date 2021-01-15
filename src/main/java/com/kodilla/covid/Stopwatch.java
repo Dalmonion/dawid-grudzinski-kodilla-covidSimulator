@@ -22,7 +22,6 @@ public class Stopwatch {
         if (isRunning) {
             secondsPassed += ((System.currentTimeMillis() - this.startTime) / 1000.0);
             isRunning = false;
-            System.out.println(secondsPassed);
         }
     }
 }
