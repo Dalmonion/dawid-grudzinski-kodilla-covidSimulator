@@ -5,7 +5,15 @@ e
 5src/main/java/com/kodilla/covid/SpreadSimulation.java,d\6\d6b8989487557f5ad2728ec95442bd52f0e11faa
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+c
+3src/main/java/com/kodilla/covid/old/IOServices.java,5\e\5ee9039a4dceb397d7d6a3662cea79d7cc425b87
+c
+3src/main/java/com/kodilla/covid/old/MainWindow.java,1\a\1accf8e4f5b6f828c86f468e13b86560755f788b
+^
+.src/main/java/com/kodilla/covid/Stopwatch.java,8\6\86d83de9c3e7010095da84ac6d6ddb7fbe49e720
+h
+8src/main/java/com/kodilla/covid/SpreadSimController.java,1\d\1db82dc34721326603b608f3b2a31fe1a75b7a61
+i
+9src/main/java/com/kodilla/covid/SpreadSimApplication.java,e\3\e39a45212af474988ecc3f46bfca2e76817698af
 l
-<src/main/java/com/kodilla/covid/gui/SpreadSimController.java,0\b\0b18e0be108c8b2b1f69b2f54163592dd77cacd1
-m
-=src/main/java/com/kodilla/covid/gui/SpreadSimApplication.java,1\4\14c9812d87a194b4f51a5aa2ee8b4170b2455397
+<src/test/java/com/kodilla/covid/CovidSimulatorTestSuite.java,f\a\fa8e9bf391d92e8572442333ad46b305ce75afcc

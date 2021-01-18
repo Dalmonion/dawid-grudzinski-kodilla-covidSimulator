@@ -19,7 +19,6 @@ public class Person {
     private double radius = 5;
     private final Circle circle;
     private Color personColor = Color.GREEN;
-//    private long deathTimer = 1000;
     private long timeWhenGotSick;
     private double sickTime = 5000;
     private boolean wasSick = false;
@@ -47,46 +46,17 @@ public class Person {
             yPosition += (getYDirection() * speed);
         }
 
-        if((System.currentTimeMillis() - timeWhenGotSick) >= sickTime) {
-            if (this.getState() == State.SICK) {
-                if (Math.random() < deathRate * 0.01) {
-                    this.setDeceased();
-                } else {
-                    this.setCured();
-                }
+        if ((System.currentTimeMillis() - timeWhenGotSick) >= sickTime && this.getState() == State.SICK) {
+            if (Math.random() < deathRate * 0.01) {
+                this.setDeceased();
+            } else {
+                this.setCured();
             }
         }
-
-
-
-//        if(this.getState().equals(State.SICK) && ((System.currentTimeMillis() - timeWhenGotSick) >= sickTime - 1)) {
-//            if (Math.random() < deathRate * 0.01) {
-//                this.setDeceased();
-//            }
-//
-////            if ((System.currentTimeMillis() - timeWhenGotSick) >= deathTimer) {
-////                deathTimer += 1000;
-////                System.out.println(deathTimer);
-////            }
-//
-//        }
 
         if (xPosition > (world.getWidth() - circle.getRadius()) || xPosition < circle.getRadius()) bounceX();
         if (yPosition > (world.getHeight() - circle.getRadius()) || yPosition < circle.getRadius()) bounceY();
 
-//        if (this.getXPosition() > world.getWidth()) {
-//            this.setXPosition(0);
-//        }
-//        if (this.getXPosition() < 0) {
-//            this.setXPosition(world.getWidth());
-//        }
-//
-//        if (this.getYPosition() > world.getHeight()) {
-//            this.setYPosition(0);
-//        }
-//        if (this.getYPosition() < 0) {
-//            this.setYPosition(world.getHeight());
-//        }
     }
 
     public void draw() {

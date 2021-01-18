@@ -71,7 +71,7 @@ set CLASSPATH=%APP_HOME%\lib\kodilla-covidSimulator-1.0-SNAPSHOT.jar;%APP_HOME%\
 
 
 @rem Execute kodilla-covidSimulator
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KODILLA_COVID_SIMULATOR_OPTS%  -classpath "%CLASSPATH%" com.kodilla.covid.gui.SpreadSimApplication %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KODILLA_COVID_SIMULATOR_OPTS%  -classpath "%CLASSPATH%" com.kodilla.covid.SpreadSimApplication %*
 
 :end
 @rem End local scope for the variables with windows NT shell

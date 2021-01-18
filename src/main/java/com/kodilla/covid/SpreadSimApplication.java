@@ -21,7 +21,6 @@ public class SpreadSimApplication extends Application {
             e.printStackTrace();
             System.exit(1);
         }
-
     }
 
     public static void main(String[] args) {

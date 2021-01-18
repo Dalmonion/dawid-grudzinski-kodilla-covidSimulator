@@ -1,7 +1,5 @@
 package com.kodilla.covid;
 
-import com.kodilla.covid.SpreadSimulation;
-import com.kodilla.covid.Stopwatch;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,8 +11,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
-import java.text.DecimalFormat;
 
 
 public class SpreadSimController {
@@ -116,7 +112,7 @@ public class SpreadSimController {
             stopwatchObject.start();
         }
 
-        if(!isMoving) {
+        if (!isMoving) {
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
             stopwatchObject.start();

@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class Stopwatch {
 
-    private DecimalFormat df = new DecimalFormat("#.##");
+    private DecimalFormat df = new DecimalFormat("#.#");
     private double startTime = 0;
     private double secondsPassed = 0;
     private boolean isRunning = false;

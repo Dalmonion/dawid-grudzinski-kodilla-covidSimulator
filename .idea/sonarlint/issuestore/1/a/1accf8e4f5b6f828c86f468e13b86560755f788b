@@ -1,0 +1,16 @@
+
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ù¯›Œ
+Q
+java:S1854¡":Remove this useless assignment to local variable "canvas".(‚ºÅ“
+V
+java:S1854B";Remove this useless assignment to local variable "slider2".(‘Ô²Òþÿÿÿÿ
+Q
+java:S1854@";Remove this useless assignment to local variable "slider1".(ÖÓÓ¾
+W	java:S125œ"<This block of commented-out lines of code should be removed.(Ãº¨Êþÿÿÿÿ
+B
+java:S1481@",Remove this unused "slider1" local variable.(ÖÓÓ¾
+G
+java:S1481B",Remove this unused "slider2" local variable.(‘Ô²Òþÿÿÿÿ
+B
+java:S1481¡"+Remove this unused "canvas" local variable.(‚ºÅ“
