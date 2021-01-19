@@ -17,3 +17,5 @@ i
 9src/main/java/com/kodilla/covid/SpreadSimApplication.java,e\3\e39a45212af474988ecc3f46bfca2e76817698af
 l
 <src/test/java/com/kodilla/covid/CovidSimulatorTestSuite.java,f\a\fa8e9bf391d92e8572442333ad46b305ce75afcc
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

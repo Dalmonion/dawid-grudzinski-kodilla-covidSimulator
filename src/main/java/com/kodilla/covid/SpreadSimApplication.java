@@ -15,6 +15,7 @@ public class SpreadSimApplication extends Application {
     public void start(Stage stage) {
         try {
             BorderPane root = FXMLLoader.load(getClass().getResource("/com.kodilla.covid/SpreadSimGui.fxml"));
+            stage.setTitle("Covid Spread Simulator");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
