@@ -23,7 +23,7 @@ To navigate through the simulation I prepared a few buttons and sliders. Beginni
 it will resume present simulation
 * Reset button - resets and whole presentation along with the timer which indicates the time 
 passed after start on each iteration
-* Exit button - will simply close window and end process.
+* Exit button - will simply close window and end process and also will save crucial data to project folder as text file.
 
 ---
 

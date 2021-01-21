@@ -65,13 +65,14 @@ public class SpreadSimController {
     private boolean isMoving;
     private boolean firstMove = false;
     private int peopleCount = 100;
+    private DataSaver dataSaver;
 
     @FXML
     public void initialize() {
         isMoving = false;
         world.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
         stopwatchObject = new Stopwatch();
-
+        dataSaver = new DataSaver();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(17), x -> {
 
@@ -83,6 +84,7 @@ public class SpreadSimController {
             simulation.move();
 
             stopwatch.setText(stopwatchObject.getDuration() + " seconds");
+            dataSaver.addData("Simulation duration (seconds)",  (int) Double.parseDouble(stopwatchObject.getDuration()));
 
             healthyPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(0)));
             healthyPeoplePercentageText.setText(String.valueOf((int) ((float)
@@ -99,7 +101,6 @@ public class SpreadSimController {
             deathPeopleText.setText(String.valueOf(simulation.getEachTypeCount().get(3)));
             deathPeoplePercentageText.setText(String.valueOf((int) ((float)
                     simulation.getEachTypeCount().get(3) / simulation.getPeopleSize() * 100)));
-
         }));
     }
 
@@ -139,6 +140,15 @@ public class SpreadSimController {
 
     @FXML
     public void exit() {
+        dataSaver.addData("Healthy people", simulation.getEachTypeCount().get(0));
+        dataSaver.addData("Sick people", simulation.getEachTypeCount().get(1));
+        dataSaver.addData("Cured people", simulation.getEachTypeCount().get(2));
+        dataSaver.addData("Dead people", simulation.getEachTypeCount().get(3));
+        dataSaver.addData("Group size", peopleCount);
+
+        dataSaver.addData("Sick time (seconds)", (int) sickTime.getValue());
+        dataSaver.addData("Death rate (%)", (int) deathRate.getValue());
+        dataSaver.saveData();
         System.exit(0);
     }
 }
