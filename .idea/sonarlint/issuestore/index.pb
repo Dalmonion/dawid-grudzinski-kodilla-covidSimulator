@@ -19,3 +19,5 @@ l
 <src/test/java/com/kodilla/covid/CovidSimulatorTestSuite.java,f\a\fa8e9bf391d92e8572442333ad46b305ce75afcc
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+^
+.src/main/java/com/kodilla/covid/DataSaver.java,d\5\d51bc397eaa994cd38d1073a3b92bd1f1e756b60

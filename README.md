@@ -16,7 +16,7 @@ represents healthy people, red sick, blue cure and black deceased.
 
 ---
 
-#Navigation
+# Navigation
 To navigate through the simulation I prepared a few buttons and sliders. Beginning from most important buttons there are:
 * Start button - start the simulation
 * Stop button - freeze action. When pressing 'start' after 'stop' button,
@@ -27,7 +27,7 @@ passed after start on each iteration
 
 ---
 
-#Sliders
+# Sliders
 Additional there are few sliders to apply small changes to simulation. Moving from top to bottom, there are:
 * People size - changes the size of each person drawn on pane
 * Group size - changes the amount of people being drawn on screen. Actual group size change every press of Reset button
