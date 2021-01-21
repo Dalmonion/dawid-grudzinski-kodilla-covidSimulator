@@ -1,5 +1,5 @@
 # Table of contents
-* [General info](#general info)
+* [General info](#general-info)
 * [Navigation](#navigation)
 * [Sliders](#sliders)
 * [Technologies](#technologies)
